@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
                 updateQuestion(questionArrayList);
             });
             binding.buttonTrue.setOnClickListener(v -> {
-                userdefinedAns = true;
+                userdefinedAns = true;//instead of using a variable, we can directly call the checkAnswer method in the onclick listener. which will take a user defined ans as a parameter
                 checkAnswer(questionArrayList);
                 updateQuestion(questionArrayList);
             });
             binding.buttonFalse.setOnClickListener(v -> {
-                userdefinedAns = false;
+                userdefinedAns = false;//instead of using a variable, we can directly call the checkAnswer method in the onclick listener. which will take a user defined ans as a parameter
                 checkAnswer(questionArrayList);
                 updateQuestion(questionArrayList);
             });
@@ -75,18 +75,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkAnswer(ArrayList<Question> questionArrayList) {
+        //this method is used to check the answer of the user
         boolean answer = questionArrayList.get(questionIndex).getAnswerTrue();
         if (userdefinedAns == answer) {
-            Snackbar.make(binding.cardView, "Correct Answer", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(binding.cardView, "Correct Answer", Snackbar.LENGTH_SHORT).show();//should use a string value for next time instead of hard coded text
             fadeAnimation();
         } else {
-            Snackbar.make(binding.cardView, "Wrong Answer", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(binding.cardView, "Wrong Answer", Snackbar.LENGTH_SHORT).show();//should use a string value for next time instead of hard coded text
             shakeAnimation();
         }
     }
 
 
     public void updateQuestion(ArrayList<Question> questionArrayList) {
+        //this method is used to update the question when the user clicks on the next/previous button
         if (questionIndex >= 0 && questionIndex < questionArrayList.size()) {
             binding.questionDisplay.setText(questionArrayList.get(questionIndex).getAnswer());
             binding.questionNoText.setText("Question No: " + (questionIndex + 1) + "/" + questionArrayList.size());
@@ -101,15 +103,17 @@ public class MainActivity extends AppCompatActivity {
        //this method will be used to shake the card view when the user gives the wrong answer
        Animation shake = AnimationUtils.loadAnimation(MainActivity.this,R.anim.shake_animation);
        binding.cardView.setAnimation(shake);
+       //the above line will set the animation to the card view the shake animation created in the xml file will be used
+       //only triggered when the user gives the wrong answer
          shake.setAnimationListener(new Animation.AnimationListener() {
               @Override
               public void onAnimationStart(Animation animation) {
-              binding.questionDisplay.setTextColor(Color.RED);
+              binding.questionDisplay.setTextColor(Color.RED);//this will set text color to red when ans is wrong
               }
 
               @Override
               public void onAnimationEnd(Animation animation) {
-                    binding.questionDisplay.setTextColor(Color.WHITE);
+                    binding.questionDisplay.setTextColor(Color.WHITE);//this will set text color to white when ans is wrong
               }
 
               @Override
@@ -128,12 +132,12 @@ public class MainActivity extends AppCompatActivity {
             alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
-                    binding.questionDisplay.setTextColor(Color.GREEN);
+                    binding.questionDisplay.setTextColor(Color.GREEN);//this will set the color of the text to green when ans is correct
                 }
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    binding.questionDisplay.setTextColor(Color.WHITE);
+                    binding.questionDisplay.setTextColor(Color.WHITE);//this will set the color of the text to white when ans is correct
                 }
 
                 @Override
