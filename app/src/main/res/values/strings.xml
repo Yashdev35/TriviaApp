@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Trivia app</string>
+    <string name="Title_app">Title text</string>
+    <string name="out_of_question">Question x/y</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="next_button">Next-></string>
+    <string name="place_holder">This is the part where qeustions will be displayed</string>
+    <string name="button_previous">Previous</string>
+    <string name="trivia_title_text">Trivia, lets see what you got!!!!</string>
+</resources>
