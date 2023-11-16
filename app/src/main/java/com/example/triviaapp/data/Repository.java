@@ -18,7 +18,8 @@ public class Repository {
     ArrayList<Question> questionArrayList = new ArrayList<>();
     String url = "https://raw.githubusercontent.com/curiousily/simple-quiz/master/script/statements-data.json";
 
-     public List<Question> getQuestion(final AnswerListAsyncResponse callBack){
+     public List<Question> getQuestion(final AnswerListAsyncResponse callBack){//get question is a method used in the repository class
+         //this method returns the list of questions (Question class Objects)
         //this method will return the list of questions we will be using volley to get the data from the url we will be using gson to parse the data  we will be using a callback to return the data
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, (JSONArray response) -> {
             //now we are actually getting the json array
